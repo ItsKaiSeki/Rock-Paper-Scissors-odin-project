@@ -38,7 +38,7 @@ function getHumanChoice() {
 
 // This function takes all the info from earlier, and plays a round, so it takes 
 // The human choice and the computer choice and I had to make it so I set the logic regarding it. 
-// The first if handles the tie scenario, so if the humanchoice and the computerchoice are the same, return
+// The first if handles the tie scenario, so if the humanChoice and the computerChoice are the same, return
 // IT'S A TIE!, then. I had to set the logic for the winning conditions. 
 // Which then return a YOU WIN! 
 // And regarding the outcome it also increases the score accordingly using humanScore ++ where ++ increases it by one. 
@@ -60,13 +60,24 @@ function playRound(humanChoice, computerChoice) {
 }
 }
 
-
-// PlayRound has two parameters which will get fed a different parameter later,
-// In this case CONST human and computer selections are the get human and get computer choices,
-// CONST being a thing that doesn't change so its a consistent parameter, then 
-// PlayRound takes (humanSelection, and computerSelection and puts them against each other and then takes the game logic we set earlier to put it all together.)
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
+// This function handles the entire logic of the game,
+// puts everything that I worked on every function and combines them and lets me loop the game for the desired rounds. 
 function playGame() {
-   
+   for (let game = 0; game < 5; game++) {
+    let humanSelect = getHumanChoice();
+    let computerSelect = getComputerChoice();
+
+    playRound(humanSelect, computerSelect);
+}
+ if (humanScore > computerScore) {
+    console.log(`You win! Player : ${humanScore}, Cpu ${computerScore}!`);
+ } else if (computerScore > humanScore) {
+    console.log(`You Lose! Cpu ${computerScore}, Player ${humanScore}!`);
+ } else if (computerScore === humanScore) {
+    console.log(`It's a Tie! Player ${humanScore} Cpu ${computerScore}!`);
+ }
+
+}
+
+
+playGame(); 
